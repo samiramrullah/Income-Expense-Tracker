@@ -20,3 +20,17 @@ exports.register = async (req, res, next) => {
         return res.status(401).json({ status: false, message: 'Failed to Reguster' });
     }
 }
+
+exports.login=async(req,res,next)=>{
+    try {
+        const {email,password}=req.body;
+        if(!email || !password) return res.status(400).json({staus:"Invaild Credentails"})
+        const user=await userSchema.findOne({email})
+        if(!user || !(await bcrypt.compare(password,user.password))) return res.status(401).json({status:false,message:"Invalid Credentails"})
+        const token=jwt.sign({userId:user.id,email:user.email,name:user.name},process.env.secret_key)
+        res.status(200).json({staus:true,message:'Successfully Logged in',token})
+        
+    } catch (error) {
+      return res.status(401).json({status:true,message:'Failed to login'})   
+    }
+}
