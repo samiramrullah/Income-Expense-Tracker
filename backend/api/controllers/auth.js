@@ -17,7 +17,7 @@ exports.register = async (req, res, next) => {
         newUser.save();
         res.status(201).json({ status: true, message: 'User Successfully Registered' });
     } catch (error) {
-        return res.status(401).json({ status: false, message: 'Failed to Reguster' });
+        return res.status(401).json({ status: false, message: 'Failed to Register' });
     }
 }
 

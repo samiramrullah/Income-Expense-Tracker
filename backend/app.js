@@ -8,12 +8,13 @@ require('dotenv').config();
 
 //routes
 const userRouter=require('./api/routes/userManagement/auth')
+const incomeRouter=require('./api/routes/Income/addincome')
 app.use(morgan('dev'));
 //db connection
 mongoose.connect(process.env.ConnectionString).then(() => {
     console.log('Connected to Database')
 })
-    .catch((err) => console.log(err))
+.catch((err) => console.log(err))
 mongoose.Promise = global.Promise;
 
 
@@ -31,6 +32,7 @@ app.use(bodyParser.json());
 
 // Settng Routes
 app.use('/api/user/auth',userRouter)
+app.use('/api/income',incomeRouter)
 
 
 //Error Hadling
