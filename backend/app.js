@@ -9,6 +9,8 @@ require('dotenv').config();
 //routes
 const userRouter=require('./api/routes/userManagement/auth')
 const incomeRouter=require('./api/routes/Income/addincome')
+const expensesRouter=require('./api/routes/Expenses/addexpenses')
+
 app.use(morgan('dev'));
 //db connection
 mongoose.connect(process.env.ConnectionString).then(() => {
@@ -31,8 +33,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
 // Settng Routes
-app.use('/api/user/auth',userRouter)
-app.use('/api/income',incomeRouter)
+app.use('/api/user/auth',userRouter);
+app.use('/api/income',incomeRouter);
+app.use('/api/expenses',expensesRouter)
 
 
 //Error Hadling
