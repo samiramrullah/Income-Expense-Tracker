@@ -10,6 +10,7 @@ require('dotenv').config();
 const userRouter=require('./api/routes/userManagement/auth')
 const incomeRouter=require('./api/routes/Income/addincome')
 const expensesRouter=require('./api/routes/Expenses/addexpenses')
+const authRoute=require('./api/routes/check-auth')
 
 app.use(morgan('dev'));
 //db connection
@@ -35,7 +36,8 @@ app.use(bodyParser.json());
 // Settng Routes
 app.use('/api/user/auth',userRouter);
 app.use('/api/income',incomeRouter);
-app.use('/api/expenses',expensesRouter)
+app.use('/api/expenses',expensesRouter);
+app.use('/api/checkauth',authRoute)
 
 
 //Error Hadling
