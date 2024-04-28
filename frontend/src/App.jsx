@@ -1,14 +1,18 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import { Routes, Route } from "react-router-dom";
 import Layout from "./pages/Dashbaord/Layout";
+import SignIn from "./pages/Auth/SignIn";
+import SignUp from "./pages/Auth/SignUp";
 const App = () => {
   return (
     <div>
       <Navbar />
       <Routes>
         <Route path="/" element={<Hero/>}/>
+        <Route path="/signin" element={<SignIn/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
         <Route path="/dashbaord/*" element={<Layout />} />
       </Routes>
     </div>

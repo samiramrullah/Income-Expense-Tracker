@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 const AddIncome = () => {
     const [incomeData,setIncomedata]=useState();
-
     const onChangeHandler=(e)=>{
         const {name,value}=e.target;
         setIncomedata(prevState=>({
@@ -13,6 +12,7 @@ const AddIncome = () => {
         e.preventDefault();
         console.log(incomeData);
     }
+
   return (
     <section class="max-w-full p-6 mx-auto bg-white rounded-md shadow-md">
     <h2 class="text-lg font-semibold text-gray-700 capitalize ">Account settings</h2>
