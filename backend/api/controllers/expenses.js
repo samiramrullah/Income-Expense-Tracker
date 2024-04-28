@@ -3,9 +3,10 @@ const expensesScheme=require('../../models/expenses');
 exports.addexpenses=async(req,res,next)=>{
     try {
         const userId=req.userData.userId;
-        const {amount,category,date,description}=req.body;
+        const {name,amount,category,date,description}=req.body;
         const newExpenses=new expensesScheme({
             userId:userId,
+            name:name,
             amount:amount,
             category:category,
             date:date
