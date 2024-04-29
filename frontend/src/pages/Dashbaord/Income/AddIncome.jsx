@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React,{useState} from 'react'
+import { ToastContainer, toast } from "react-toastify";
 const AddIncome = () => {
     const [incomeData,setIncomedata]=useState();
     const onChangeHandler=(e)=>{
@@ -10,7 +12,22 @@ const AddIncome = () => {
     }
     const onSubmitHandler=(e)=>{
         e.preventDefault();
-        console.log(incomeData);
+        axios
+      .post(
+        `${process.env.REACT_APP_API_KEY}income/addincome`,
+        incomeData,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      )
+      .then((res) => {
+        toast.success(res.data.message, { position: "top-right" });
+      })
+      .catch((err) => {
+        toast.error(err?.response?.data?.message, { position: "top-right" });
+      });
     }
 
   return (
@@ -66,6 +83,7 @@ const AddIncome = () => {
             <button type='submit' class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Save</button>
         </div>
     </form>
+    <ToastContainer/>
 </section>
   )
 }

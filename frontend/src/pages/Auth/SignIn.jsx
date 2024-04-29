@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 const SignIn = () => {
     const [userData, setUserData] = useState();
-
+    const navigate=useNavigate();
     const onChangeHandler = (e) => {
       const { name, value } = e.target;
       setUserData((prevState) => ({
@@ -20,6 +20,7 @@ const SignIn = () => {
         .then((res) => {
           localStorage.setItem('token',res.data.token)
           toast.success(res.data.message,{position:'top-right'})
+          navigate('/dashbaord')
         })
         .catch((err) => {
           toast.error(err?.response?.data?.message, { position: "top-right" });
