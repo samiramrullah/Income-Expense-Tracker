@@ -23,3 +23,17 @@ exports.addincome=async(req,res,next)=>{
         res.status(401).json({status:false,message:"Failed to Add"});
     }
 }
+
+exports.getallincome=async(req,res,next)=>{
+        try {
+            const userId=req.userData.userId;
+            const income=await incomeSchema.find({userId:userId})
+            res.status(200).json({
+                status:true,
+                message:"Successfully Fetched",
+                data:income
+            })
+        } catch (error) {
+            res.status(401).json({status:false,message:"Failed to fetch"})
+        }
+}

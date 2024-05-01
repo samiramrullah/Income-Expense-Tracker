@@ -25,3 +25,20 @@ exports.addexpenses=async(req,res,next)=>{
         })
     }
 }
+
+exports.allexpenses=async(req,res,next)=>{
+    try {
+        const userId=req.userData.userId;
+        const expenses=await expensesScheme.find({userId:userId});
+        res.status(200).json({
+            status:true,
+            message:"Successfully Fetched",
+            data:expenses
+        })
+    } catch (error) {
+        res.status(401).json({
+            status:false,
+            message:"Failed to fetch"
+        })
+    }
+}
