@@ -1,7 +1,8 @@
+import axios from "axios";
 import React,{useState,useEffect} from "react";
 import { Routes,Route, Link } from "react-router-dom";
+import AllIncome from "./Income/AllIncome";
 import AddIncome from "./Income/AddIncome";
-import axios from "axios";
 import AddExpenses from "./Expenses/AddExpenses";
 const Layout = () => {
   const [isAuthorized,setIsAuthorized]=useState(false);
@@ -110,6 +111,7 @@ const Layout = () => {
               <Routes>
                 <Route path="addincome" element={<AddIncome/>}/>
                 <Route path="addexpenses" element={<AddExpenses/>}/>
+                <Route path="incomeanalysis" element={<AllIncome/>}/>
               </Routes>
           </div>
         </div>

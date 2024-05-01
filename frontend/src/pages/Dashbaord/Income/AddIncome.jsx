@@ -2,7 +2,13 @@ import axios from 'axios';
 import React,{useState} from 'react'
 import { ToastContainer, toast } from "react-toastify";
 const AddIncome = () => {
-    const [incomeData,setIncomedata]=useState();
+    const [incomeData,setIncomedata]=useState({
+      name:"",
+      amount:"",
+      category:"",
+      date:"",
+      description:""
+    });
     const onChangeHandler=(e)=>{
         const {name,value}=e.target;
         setIncomedata(prevState=>({
@@ -24,6 +30,12 @@ const AddIncome = () => {
       )
       .then((res) => {
         toast.success(res.data.message, { position: "top-right" });
+        setIncomedata({
+          name:"",
+          amount:"",
+          category:"",
+          description:""
+        })
       })
       .catch((err) => {
         toast.error(err?.response?.data?.message, { position: "top-right" });
@@ -41,6 +53,8 @@ const AddIncome = () => {
                 type='text'
                 name='name'
                 onChange={onChangeHandler}
+                required
+                value={incomeData?.name}
                 />
             </div>
             <div>
@@ -49,6 +63,8 @@ const AddIncome = () => {
                 type='number'
                 name='amount'
                 onChange={onChangeHandler}
+                required
+                value={incomeData?.amount}
                 />
             </div>
             <div>
@@ -57,6 +73,8 @@ const AddIncome = () => {
                 type='text'
                 name='category'
                 onChange={onChangeHandler}
+                required
+                value={incomeData?.category}
                 />
             </div>
             <div>
@@ -65,6 +83,8 @@ const AddIncome = () => {
                 type='date'
                 name='date'
                 onChange={onChangeHandler}
+                required
+                value={incomeData?.date}
                 />
             </div>
             <div>
@@ -75,6 +95,7 @@ const AddIncome = () => {
                 rows={4}
                 cols={50}
                 onChange={onChangeHandler}
+                value={incomeData?.description}
                 />
             </div>
         </div>

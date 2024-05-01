@@ -31,7 +31,7 @@ exports.getallincome=async(req,res,next)=>{
             res.status(200).json({
                 status:true,
                 message:"Successfully Fetched",
-                data:income
+                income
             })
         } catch (error) {
             res.status(401).json({status:false,message:"Failed to fetch"})
