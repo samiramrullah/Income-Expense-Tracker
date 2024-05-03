@@ -4,6 +4,7 @@ import { Routes,Route, Link } from "react-router-dom";
 import AllIncome from "./Income/AllIncome";
 import AddIncome from "./Income/AddIncome";
 import AddExpenses from "./Expenses/AddExpenses";
+import AllExpenses from "./Expenses/AllExpenses";
 const Layout = () => {
   const [isAuthorized,setIsAuthorized]=useState(false);
 
@@ -112,6 +113,7 @@ const Layout = () => {
                 <Route path="addincome" element={<AddIncome/>}/>
                 <Route path="addexpenses" element={<AddExpenses/>}/>
                 <Route path="incomeanalysis" element={<AllIncome/>}/>
+                <Route path="expensesanalysis" element={<AllExpenses/>}/>
               </Routes>
           </div>
         </div>
