@@ -2,8 +2,6 @@ import React from 'react'
 import { LineChart } from '@mui/x-charts/LineChart';
 
 const LineGraph = ({data}) => {
-  console.log(data,"datadatadatadatadata");
-  const categories = data.map((entry) => entry.category);
   const amounts = data.map((entry) => entry.amount);
   return (
     <LineChart
