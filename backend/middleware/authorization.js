@@ -8,7 +8,7 @@ const authenticateToken = (req, res, next) => {
             message: "Token missing"
         });
     }
-
+    
     jwt.verify(token, process.env.secret_key, (err, decoded) => {
         if (err) {
             return res.status(401).json({
@@ -16,7 +16,6 @@ const authenticateToken = (req, res, next) => {
                 message: "Invalid token"
             });
         }
-
         req.user = decoded;
         next();
     });

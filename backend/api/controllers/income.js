@@ -1,6 +1,4 @@
 const incomeSchema=require('../../models/income');
-
-
 exports.addincome=async(req,res,next)=>{
     try {
         const userId=req.userData.userId;
