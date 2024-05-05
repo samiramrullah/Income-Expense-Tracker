@@ -1,5 +1,5 @@
-const Income = require('../../models/income'); // Import Income model
-const Expenses = require('../../models/expenses'); // Import Expenses model
+const Income = require('../../models/income'); 
+const Expenses = require('../../models/expenses'); 
 
 exports.incomeexpense = async (req, res, next) => {
     try {
