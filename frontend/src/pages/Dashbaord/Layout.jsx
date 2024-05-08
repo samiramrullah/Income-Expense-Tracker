@@ -5,6 +5,7 @@ import AllIncome from "./Income/AllIncome";
 import AddIncome from "./Income/AddIncome";
 import AddExpenses from "./Expenses/AddExpenses";
 import AllExpenses from "./Expenses/AllExpenses";
+import IncomeExpense from "./Income-Expense/IncomeExpense";
 const Layout = () => {
   const [isAuthorized,setIsAuthorized]=useState(false);
 
@@ -114,6 +115,7 @@ const Layout = () => {
                 <Route path="addexpenses" element={<AddExpenses/>}/>
                 <Route path="incomeanalysis" element={<AllIncome/>}/>
                 <Route path="expensesanalysis" element={<AllExpenses/>}/>
+                <Route path="ananlysis" element={<IncomeExpense/>}/>
               </Routes>
           </div>
         </div>
