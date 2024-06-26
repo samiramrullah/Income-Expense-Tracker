@@ -14,7 +14,6 @@ const AllExpenses = () => {
         },
       })
       .then((res) => {
-        console.log(res.data,"ressssssssss");
         toast.success(res.data.message, { position: "top-right" });
         setAllExpenses(res.data.expenses);
       })
@@ -57,8 +56,8 @@ const AllExpenses = () => {
                   >
                     {expense?.name}
                   </th>
-                  <td class="px-6 py-4">{expense.category}</td>
-                  <td class="px-6 py-4">{expense.amount}</td>
+                  <td class="px-6 py-4">{expense?.category}</td>
+                  <td class="px-6 py-4">{expense?.amount}</td>
                 </tr>
               ))}
             </tbody>

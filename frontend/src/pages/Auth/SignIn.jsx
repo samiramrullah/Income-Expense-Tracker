@@ -69,14 +69,7 @@ const SignIn = () => {
                 >
                   Password
                 </label>
-                <div class="text-sm">
-                  <a
-                    href="1"
-                    class="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
+                
               </div>
               <div class="mt-2">
                 <input

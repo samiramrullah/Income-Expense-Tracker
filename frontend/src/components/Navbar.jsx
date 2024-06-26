@@ -5,8 +5,8 @@ const Navbar = () => {
   return (
     <nav class="bg-white  fixed w-full z-20 top-0 start-0 border-b border-gray-200">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a
-          href="1"
+        <Link
+          to={'/'}
           class="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <img
@@ -17,7 +17,7 @@ const Navbar = () => {
           <span class="self-center text-2xl font-semibold whitespace-nowrap ">
             Tracker
           </span>
-        </a>
+        </Link>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <Link to={'/signup'}>
           <button
@@ -74,14 +74,7 @@ const Navbar = () => {
                 About
               </a>
             </li>
-            <li>
-              <a
-                href="1"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
-              >
-                Services
-              </a>
-            </li>
+            
             <li>
               <Link
                 to={'/contact'}
