@@ -9,7 +9,7 @@ require('dotenv').config();
 //routes
 const userRouter=require('./api/routes/userManagement/auth')
 const incomeRouter=require('./api/routes/Income/addincome')
-const expensesRouter=require('./api/routes/Expenses/addexpenses')
+const expensesRouter=require('./api/routes/Expenses/expenses')
 const authRoute=require('./api/routes/check-auth')
 const incomeexpenseRoute=require('./api/routes/incomeexpenses')
 

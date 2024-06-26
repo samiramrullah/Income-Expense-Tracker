@@ -28,6 +28,61 @@ exports.addexpenses=async(req,res,next)=>{
     }
 }
 
+exports.updateExpenses = async (req, res, next) => {
+    try {
+        const userId = req.userData.userId;
+        const isValidUser = await userSchema.findOne({ _id: userId });
+
+        if (!isValidUser) return res.status(400).json({ status: false, message: "User Doesn't Exist" });
+
+        const { expenseId, name, amount, category, date, description } = req.body;
+
+        const updatedExpense = await expensesSchema.findOneAndUpdate(
+            { _id: expenseId, userId: userId },
+            { name, amount, category, date, description },
+            { new: true }
+        );
+
+        if (!updatedExpense) return res.status(400).json({ status: false, message: "Expense Not Found" });
+
+        res.status(200).json({
+            status: true,
+            message: "Expenses Successfully Updated",
+            updatedExpense
+        });
+    } catch (error) {
+        res.status(401).json({
+            status: false,
+            message: "Failed to Update"
+        });
+    }
+};
+
+exports.deleteExpenses = async (req, res, next) => {
+    try {
+        const userId = req.userData.userId;
+        const isValidUser = await userSchema.findOne({ _id: userId });
+
+        if (!isValidUser) return res.status(400).json({ status: false, message: "User Doesn't Exist" });
+
+        const { expenseId } = req.body;
+
+        const deletedExpense = await expensesSchema.findOneAndDelete({ _id: expenseId, userId: userId });
+
+        if (!deletedExpense) return res.status(400).json({ status: false, message: "Expense Not Found" });
+
+        res.status(200).json({
+            status: true,
+            message: "Expenses Successfully Deleted"
+        });
+    } catch (error) {
+        res.status(401).json({
+            status: false,
+            message: "Failed to Delete"
+        });
+    }
+};
+
 exports.allexpenses=async(req,res,next)=>{
     try {
         const userId=req.userData.userId;
