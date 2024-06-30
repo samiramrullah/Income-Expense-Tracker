@@ -23,7 +23,6 @@ const IncomeExpense = () => {
         toast.error(err.data.message, { position: "top-right" });
       });
   }, []);
-  console.log(incomeExpenseData);
   return (
     <>
     <div class="flex justify-end mt-6">
@@ -46,7 +45,7 @@ const IncomeExpense = () => {
         <Table data={incomeExpenseData?.expenses} />
       </div>
       <ToastContainer />
-    </div>:<LineGraph incomeData={incomeExpenseData?.incomes} expenseData={incomeExpenseData.expenses}/>}
+    </div>:<LineGraph incomeData={incomeExpenseData?.incomes} expenseData={incomeExpenseData?.expenses}/>}
     </>
   );
 };

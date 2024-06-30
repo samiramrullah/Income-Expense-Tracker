@@ -27,24 +27,39 @@ exports.addexpenses=async(req,res,next)=>{
         })
     }
 }
+exports.getExpenseById = async (req, res, next) => {
+    try {
+        const userId = req.userData.userId;
+        const isValidUser = await userSchema.findOne({ _id: userId });
+        if (!isValidUser) return res.status(400).json({ status: false, message: "User Doesn't Exist" });
+        const { expenseId } = req.params;
+        const expense = await expensesScheme.findOne({ _id: expenseId, userId: userId });
+        if (!expense) return res.status(400).json({ status: false, message: "Expense Not Found" });
+        res.status(200).json({
+            status: true,
+            message: "Expense Retrieved Successfully",
+            expense
+        });
+    } catch (error) {
+        res.status(401).json({
+            status: false,
+            message: "Failed to Retrieve Expense"
+        });
+    }
+};
 
 exports.updateExpenses = async (req, res, next) => {
     try {
         const userId = req.userData.userId;
         const isValidUser = await userSchema.findOne({ _id: userId });
-
         if (!isValidUser) return res.status(400).json({ status: false, message: "User Doesn't Exist" });
-
         const { expenseId, name, amount, category, date, description } = req.body;
-
-        const updatedExpense = await expensesSchema.findOneAndUpdate(
+        const updatedExpense = await expensesScheme.findOneAndUpdate(
             { _id: expenseId, userId: userId },
             { name, amount, category, date, description },
             { new: true }
         );
-
         if (!updatedExpense) return res.status(400).json({ status: false, message: "Expense Not Found" });
-
         res.status(200).json({
             status: true,
             message: "Expenses Successfully Updated",
