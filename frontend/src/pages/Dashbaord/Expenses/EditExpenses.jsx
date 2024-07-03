@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 const EditExpenses = () => {
     const [expensesData, setExpensesData] = useState({});
     const {expenseId}=useParams()
-
     useEffect(()=>{
       axios.get(`${process.env.REACT_APP_API_KEY}expenses/getexpensebyid/${expenseId}`,{headers:{
         Authorization:'Bearer '+localStorage.getItem('token')
@@ -25,10 +24,6 @@ const EditExpenses = () => {
     };
   const onSubmithandler=(e)=>{
     e.preventDefault()
-    setExpensesData((prevExpensesData) => ({
-      ...prevExpensesData,
-      expenseId: expenseId
-  }));
       axios.put(`${process.env.REACT_APP_API_KEY}expenses/updateexpenses`, expensesData,{headers:{
         'Authorization':'Bearer '+localStorage.getItem('token')
       }})
@@ -39,7 +34,6 @@ const EditExpenses = () => {
         toast.error(err?.response?.data?.message, { position: "top-right" });
       });
   }
-  console.log(expensesData);
   return (
     <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md">
       <h2 class="text-lg font-semibold text-gray-700 capitalize">

@@ -53,9 +53,9 @@ exports.updateExpenses = async (req, res, next) => {
         const userId = req.userData.userId;
         const isValidUser = await userSchema.findOne({ _id: userId });
         if (!isValidUser) return res.status(400).json({ status: false, message: "User Doesn't Exist" });
-        const { expenseId, name, amount, category, date, description } = req.body;
+        const {_id, name, amount, category, date, description } = req.body;
         const updatedExpense = await expensesScheme.findOneAndUpdate(
-            { _id: expenseId, userId: userId },
+            { _id: _id, userId: userId },
             { name, amount, category, date, description },
             { new: true }
         );
@@ -79,10 +79,9 @@ exports.deleteExpenses = async (req, res, next) => {
         const isValidUser = await userSchema.findOne({ _id: userId });
 
         if (!isValidUser) return res.status(400).json({ status: false, message: "User Doesn't Exist" });
+        const { id } = req.params;
 
-        const { expenseId } = req.body;
-
-        const deletedExpense = await expensesSchema.findOneAndDelete({ _id: expenseId, userId: userId });
+        const deletedExpense = await expensesScheme.findOneAndDelete({ _id: id, userId: userId });
 
         if (!deletedExpense) return res.status(400).json({ status: false, message: "Expense Not Found" });
 
