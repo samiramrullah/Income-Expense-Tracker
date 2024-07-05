@@ -1,6 +1,28 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const Contact = () => {
+  const [formData, setFormData] = useState();
+
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post(`${process.env.REACT_APP_API_KEY}email`, formData)
+      .then((res) => {
+        toast.success(res.data.message, { position: "top-right" });
+      })
+      .catch((err) => {
+        toast.error(err?.response?.data?.message, { position: "top-right" });
+      });
+  };
   return (
     <>
       <section class="py-28">
@@ -36,7 +58,7 @@ const Contact = () => {
                           />
                         </svg>
                         <h5 class="text-black text-base font-normal leading-6 ml-5">
-                          470-601-1911
+                          +91-9041952237
                         </h5>
                       </a>
                       <a href="1" class="flex items-center mb-6">
@@ -55,7 +77,7 @@ const Contact = () => {
                           />
                         </svg>
                         <h5 class="text-black text-base font-normal leading-6 ml-5">
-                          Pagedone1234@gmail.com
+                          samiramrullah@gmail.com
                         </h5>
                       </a>
                       <a href="1" class="flex items-center">
@@ -78,7 +100,7 @@ const Contact = () => {
                           />
                         </svg>
                         <h5 class="text-black text-base font-normal leading-6 ml-5">
-                          654 Sycamore Avenue, Meadowville, WA 76543
+                          Bengaluru , India
                         </h5>
                       </a>
                     </div>
@@ -86,75 +108,49 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-
             <div class="bg-gray-50 p-5 lg:p-11 lg:rounded-r-2xl rounded-2xl">
-              <h2 class="text-indigo-600 font-manrope text-4xl font-semibold leading-10 mb-11">
-                Send Us A Message
-              </h2>
-              <input
-                type="text"
-                class="w-full h-12 text-gray-600 placeholder-gray-400  shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
-                placeholder="Name"
-              />
-              <input
-                type="text"
-                class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
-                placeholder="Email"
-              />
-              <input
-                type="text"
-                class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
-                placeholder="Phone"
-              />
-              <div class="mb-10">
-                <h4 class="text-gray-500 text-lg font-normal leading-7 mb-4">
-                  Preferred method of communication
-                </h4>
-                <div class="flex">
-                  <div class="flex items-center mr-11">
-                    <input
-                      id="radio-group-1"
-                      type="radio"
-                      name="radio-group"
-                      class="hidden checked:bg-no-repeat checked:bg-center checked:border-indigo-500 checked:bg-indigo-100"
-                    />
-                    <label
-                      for="radio-group-1"
-                      class="flex items-center cursor-pointer text-gray-500 text-base font-normal leading-6"
-                    >
-                      <span class="border border-gray-300 rounded-full mr-2 w-4 h-4  ml-2 "></span>{" "}
-                      Email
-                    </label>
-                  </div>
-                  <div class="flex items-center">
-                    <input
-                      id="radio-group-2"
-                      type="radio"
-                      name="radio-group"
-                      class="hidden checked:bg-no-repeat checked:bg-center checked:border-indigo-500 checked:bg-indigo-100"
-                    />
-                    <label
-                      for="radio-group-2"
-                      class="flex items-center cursor-pointer text-gray-500 text-base font-normal leading-6"
-                    >
-                      <span class="border border-gray-300  rounded-full mr-2 w-4 h-4  ml-2 "></span>{" "}
-                      Phone
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <input
-                type="text"
-                class="w-full h-12 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
-                placeholder="Message"
-              />
-              <button class="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-indigo-800 bg-indigo-600 shadow-sm">
-                Send
-              </button>
+              <form onSubmit={onSubmitHandler}>
+                <h2 class="text-indigo-600 font-manrope text-4xl font-semibold leading-10 mb-11">
+                  Send Us A Message
+                </h2>
+                <input
+                  type="text"
+                  class="w-full h-12 text-gray-600 placeholder-gray-400  shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
+                  placeholder="Name"
+                  name="name"
+                  required
+                  onChange={onChangeHandler}
+                />
+                <input
+                  type="text"
+                  class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
+                  placeholder="Email"
+                  name="email"
+                  required
+                  onChange={onChangeHandler}
+                />
+                <input
+                  type="text"
+                  class="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
+                  placeholder="Phone"
+                  name="phoneNo"
+                  onChange={onChangeHandler}
+                />
+                <textarea rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Write your message here..."
+                  name="message"
+                  required
+                  onChange={onChangeHandler}
+                />
+                <button class="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-indigo-800 bg-indigo-600 shadow-sm"
+                  type="submit">
+                  Send
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </section>
+      <ToastContainer />
     </>
   );
 };

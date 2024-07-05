@@ -12,6 +12,7 @@ const incomeRouter=require('./api/routes/Income/income')
 const expensesRouter=require('./api/routes/Expenses/expenses')
 const authRoute=require('./api/routes/check-auth')
 const incomeexpenseRoute=require('./api/routes/incomeexpenses')
+const emailRoute=require('./api/routes/email')
 
 app.use(morgan('dev'));
 //db connection
@@ -39,7 +40,8 @@ app.use('/api/user/auth',userRouter);
 app.use('/api/income',incomeRouter);
 app.use('/api/expenses',expensesRouter);
 app.use('/api/checkauth',authRoute);
-app.use('/api/incomeexpense',incomeexpenseRoute)
+app.use('/api/incomeexpense',incomeexpenseRoute);
+app.use('/api',emailRoute);
 
 
 //Error Hadling
