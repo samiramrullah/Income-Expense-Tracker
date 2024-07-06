@@ -11,7 +11,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="w-full lg:w-8/12">
-          <img className="w-full h-full" src="https://i.ibb.co/FhgPJt8/Rectangle-116.png" alt="A group of People" />
+          <img className="w-full h-full" src="https://i.ibb.co/FhgPJt8/Rectangle-116.png" alt="Samir" />
         </div>
       </div>
 
@@ -25,19 +25,19 @@ const AboutUs = () => {
         <div className="w-full lg:w-8/12 lg:pt-8">
           <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 lg:gap-4 shadow-lg rounded-md">
             <div className="p-4 pb-6 flex justify-center flex-col items-center">
-              <img className="md:block hidden" src="https://www.nexel.in/media/blog/banner/web_development_Z62jy4k.jpg" alt="Alexa featured Image" />
+              <img className="md:block hidden" src="https://www.nexel.in/media/blog/banner/web_development_Z62jy4k.jpg" alt="WebDevelopment" />
               <p className="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">Web Development</p>
             </div>
             <div className="p-4 pb-6 flex justify-center flex-col items-center">
-              <img className="md:block hidden" src="https://blog.daway.in/wp-content/uploads/2024/01/1_cG6U1qstYDijh9bPL42e-Q.jpg" alt="Olivia featured Image" />
+              <img className="md:block hidden" src="https://blog.daway.in/wp-content/uploads/2024/01/1_cG6U1qstYDijh9bPL42e-Q.jpg" alt="MachineLearning" />
               <p className="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">Machine Learning</p>
             </div>
             <div className="p-4 pb-6 flex justify-center flex-col items-center">
-              <img className="md:block hidden" src="https://cdn.prod.website-files.com/6410ebf8e483b5bb2c86eb27/6410ebf8e483b5758186fbd8_ABM%20college%20mobile%20app%20dev%20main.jpg" alt="Liam featued Image" />
+              <img className="md:block hidden" src="https://cdn.prod.website-files.com/6410ebf8e483b5bb2c86eb27/6410ebf8e483b5758186fbd8_ABM%20college%20mobile%20app%20dev%20main.jpg" alt="AppDevelopment" />
               <p className="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">App Development</p>
             </div>
             <div className="p-4 pb-6 flex justify-center flex-col items-center">
-              <img className="md:block hidden" src="https://res.cloudinary.com/highereducation/images/f_auto,q_auto/v1662131677/ComputerScience.org/cybersecurity_degrees_6720dc664/cybersecurity_degrees_6720dc664.jpg?_i=AA" alt="Elijah featured image" />
+              <img className="md:block hidden" src="https://res.cloudinary.com/highereducation/images/f_auto,q_auto/v1662131677/ComputerScience.org/cybersecurity_degrees_6720dc664/cybersecurity_degrees_6720dc664.jpg?_i=AA" alt="SecurityAnalysis" />
               <p className="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">Security Analysis</p>
             </div>
           </div>
