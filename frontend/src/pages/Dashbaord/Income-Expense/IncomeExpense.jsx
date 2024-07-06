@@ -30,13 +30,12 @@ const IncomeExpense = () => {
         {isShowGraph?"Graph":"Tabular"}
         </button>
       </div>
-
     {isShowGraph?<div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
       <div>
         <h2 class="text-lg font-semibold text-gray-700 capitalize text-center">
           Income
         </h2>
-        <Table data={incomeExpenseData?.incomes} />
+        <Table data={incomeExpenseData?.incomes} name="income" />
       </div>
       <div>
         <h2 class="text-lg font-semibold text-gray-700 capitalize text-center">

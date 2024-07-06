@@ -8,6 +8,8 @@ import AllExpenses from "./Expenses/AllExpenses";
 import IncomeExpense from "./Income-Expense/IncomeExpense";
 import EditExpenses from "./Expenses/EditExpenses";
 import EditIncome from "./Income/EditIncome";
+import ViewIncome from "./ViewData/ViewIncome";
+import ViewExpense from './ViewData/ViewExpense'
 const Layout = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const navigate=useNavigate();
@@ -129,6 +131,8 @@ const Layout = () => {
               <Route path="ananlysis" element={<IncomeExpense />} />
               <Route path="editexpense/:expenseId" element={<EditExpenses />} />
               <Route path="editincome/:incomeId" element={<EditIncome />} />
+              <Route path="viewincome/:incomeId" element={<ViewIncome />} />
+              <Route path="viewexpense/:expenseId" element={<ViewExpense />} />
             </Routes>
           </div>
         </div>

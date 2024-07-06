@@ -14,7 +14,7 @@ const SignIn = () => {
         [name]: value,
       }));
     };
-    const onSubmitHandler = (e) => {
+const onSubmitHandler = (e) => {
       e.preventDefault();
       axios
         .post(`${process.env.REACT_APP_API_KEY}user/auth/login`, userData)
@@ -26,7 +26,7 @@ const SignIn = () => {
         .catch((err) => {
           toast.error(err?.response?.data?.message, { position: "top-right" });
         });
-    };
+};
   return (
     <>
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mt-28">

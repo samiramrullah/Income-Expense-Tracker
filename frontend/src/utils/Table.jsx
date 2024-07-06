@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Table = ({ data }) => {
+const Table = ({ data, name }) => {
   return (
     <>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
             <tr>
               <th scope="col" class="px-6 py-3">
                 Name
@@ -32,6 +33,7 @@ const Table = ({ data }) => {
                 </th>
                 <td class="px-6 py-4">{itm?.category}</td>
                 <td class="px-6 py-4">{itm?.amount}</td>
+                <Link to={name === "income" ? `/dashbaord/viewincome/${itm._id}` : `/dashbaord/viewexpense/${itm._id}`}>
                 <td class="px-6 py-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -53,6 +55,7 @@ const Table = ({ data }) => {
                     />
                   </svg>
                 </td>
+                </Link>
               </tr>
             ))}
           </tbody>
